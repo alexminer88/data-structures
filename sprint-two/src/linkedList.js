@@ -45,6 +45,20 @@ var LinkedList = function() {
     return false;
   };
 
+  list.removeTail = function() {
+    var node = list.head;
+    // loop through list until we find node right before tail
+    while (node.next !== list.tail) {
+      node = node.next;
+    }
+    // save list.tail.value
+    var oldTail = list.tail.value;
+    // set tail to current node
+    list.tail = node;
+    list.tail.next = null;
+    return oldTail;
+  }
+
   return list;
 };
 
