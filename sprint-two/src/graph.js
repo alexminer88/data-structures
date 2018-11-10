@@ -23,13 +23,11 @@ Graph.prototype.contains = function(node) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
   if (this.nodes[node].length !== 0){ 
-    for (var key in this.nodes){
-       this.removeEdge(this.nodes[key],node);
+    var edgeList = this.nodes[node];
+    for (var i = 0; i < edgeList.length; i++){
+      this.removeEdge(edgeList[i],node);
     }
   }
-  // this.forEachNode(function(iteratedNode){
-  //   this.removeEdge(iteratedNode,node);
-  // });
   delete this.nodes[node];
   //loop over all nodes
     //if this.nodes[key].includes[node]
@@ -62,6 +60,12 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+  .addNode : O(1)
+  .removeNode : O(n^2)
+  .hasEdge : O(n)
+  .addEdge : O(1)
+  .removeEdge : O(n)
+  .forEachNode : O(n)
  */
 
 
